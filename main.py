@@ -2,8 +2,8 @@ from googleapiclient.discovery import build
 from halo import Halo
 
 spinner = Halo(text='Loading', spinner='dots', text_color='magenta')
-my_api_key = "AIzaSyCbdKgFgr4Olg0Cwx_InLaSIi72B77in58"
-my_cse_id = "55ef8e5c221f8461c"
+my_api_key = "Your API Key"
+my_cse_id = "Your CSE ID"
 
 
 def google_search(search_term, url, api_key, cse_id, **kwargs):
