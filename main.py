@@ -2,11 +2,11 @@ from googleapiclient.discovery import build
 from halo import Halo
 
 spinner = Halo(text='Loading', spinner='dots', text_color='magenta')
-my_api_key = "Your API Key"
-my_cse_id = "Your CSE ID"
+my_api_key = "AIzaSyCbdKgFgr4Olg0Cwx_InLaSIi72B77in58"
+my_cse_id = "55ef8e5c221f8461c"
 
 
-def google_search(search_term, site, api_key, cse_id, **kwargs):
+def google_search(search_term, url, api_key, cse_id, **kwargs):
     try:
         i = 0
         service = build("customsearch", "v1", developerKey=api_key)
@@ -20,10 +20,9 @@ def google_search(search_term, site, api_key, cse_id, **kwargs):
         for x in list:
             for y in x['items']:
                 i = i + 1
-                # print(y['displayLink'], i)
-                if y['displayLink'] == site or 'www' + site:
+                if y['displayLink'] == url or y['displayLink'] == 'www.' + url:
+                    print('www' + url)
                     return y['displayLink'], i
-                # sits.append(y['displayLink'])
         return '\nNot Found'
     except ValueError:
         return '\nInvalid input. Please enter a valid number.'
@@ -34,8 +33,8 @@ def google_search(search_term, site, api_key, cse_id, **kwargs):
 
 
 if __name__ == '__main__':
-    name = input('name:')
-    site = input('site:')
+    name = input('Search Text:')
+    site = input('Site Url:')
     spinner.start()
     result = google_search(name, site, my_api_key, my_cse_id)
     spinner.stop()
